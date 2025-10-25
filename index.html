@@ -1,1 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>校园同人文平台 - 首页</title>
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">校园同人文</a>
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link" href="novels.html">作品库</a>
+                <a class="nav-link" href="community.html">社区</a>
+                <a class="nav-link" href="submit-work.html">投稿</a>
+                <a class="nav-link" href="login.html" id="loginLink">登录</a>
+            </div>
+        </div>
+    </nav>
 
+    <div class="container mt-4">
+        <div class="hero-section text-center py-5">
+            <h1>欢迎来到校园同人文平台</h1>
+            <p>分享你的创意，发现精彩故事</p>
+            <a href="submit-work.html" class="btn btn-primary btn-lg">开始创作</a>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h5>📚 作品库</h5>
+                        <p>浏览其他作者创作的精彩故事</p>
+                        <a href="novels.html" class="btn btn-outline-primary">查看作品</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h5>💬 社区交流</h5>
+                        <p>与其他读者作者互动交流</p>
+                        <a href="community.html" class="btn btn-outline-primary">进入社区</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h5>✍️ 投稿创作</h5>
+                        <p>分享你的校园同人故事</p>
+                        <a href="submit-work.html" class="btn btn-outline-primary">立即投稿</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/firebase-config.js"></script>
+    <script src="assets/js/auth.js"></script>
+</body>
+</html>
