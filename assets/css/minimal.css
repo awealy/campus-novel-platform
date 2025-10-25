@@ -1,0 +1,18 @@
+:root {
+  /* 单色渐变体系 */
+  --primary-50: #f8f9ff;
+  --primary-100: #eef0ff;
+  --primary-500: #4e60ff; /* 唯一强调色 */
+  --primary-600: #3a4beb;
+  
+  /* 绝对中性色 */
+  --gray-100: #f7f7f7;
+  --gray-300: #eaeaea;
+  --gray-500: #999;
+  --gray-700: #444;
+  --gray-900: #111;
+  
+  /* 动态阴影 */
+  --shadow-sm: 0 1px 1px rgba(0,0,0,0.02);
+  --shadow-hover: 0 4px 12px rgba(78,96,255,0.1);
+}
