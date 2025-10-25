@@ -1,1 +1,98 @@
 
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>投稿 - 校园同人文平台</title>
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">校园同人文</a>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>投稿你的校园同人作品</h4>
+                    </div>
+                    <div class="card-body">
+                        <form id="submitWorkForm">
+                            <div class="mb-3">
+                                <label class="form-label">作品标题 *</label>
+                                <input type="text" class="form-control" id="workTitle" required>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label class="form-label">作者名称 *</label>
+                                <input type="text" class="form-control" id="authorName" required>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label class="form-label">作品简介</label>
+                                <textarea class="form-control" id="workSummary" rows="3" placeholder="简要介绍你的故事..."></textarea>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label class="form-label">作品内容 *</label>
+                                <textarea class="form-control" id="workContent" rows="15" required placeholder="开始创作你的故事..."></textarea>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label class="form-label">标签</label>
+                                <input type="text" class="form-control" id="workTags" placeholder="校园, 恋爱, 悬疑 (用逗号分隔)">
+                            </div>
+                            
+                            <div class="alert alert-info">
+                                <strong>投稿说明：</strong>所有投稿都需要经过管理员审核，审核通过后会在作品库显示。
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary">提交作品</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/firebase-config.js"></script>
+    <script>
+        document.getElementById('submitWorkForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            if (!currentUser) {
+                alert('请先登录后再投稿');
+                window.location.href = 'login.html';
+                return;
+            }
+            
+            const workData = {
+                title: document.getElementById('workTitle').value,
+                author: document.getElementById('authorName').value,
+                summary: document.getElementById('workSummary').value,
+                content: document.getElementById('workContent').value,
+                tags: document.getElementById('workTags').value.split(',').map(tag => tag.trim()),
+                status: 'pending', // pending, approved, rejected
+                submittedBy: currentUser.email,
+                submittedAt: firebase.firestore.FieldValue.serverTimestamp(),
+                likes: 0,
+                views: 0
+            };
+            
+            try {
+                await db.collection('works').add(workData);
+                alert('作品提交成功！等待管理员审核。');
+                document.getElementById('submitWorkForm').reset();
+            } catch (error) {
+                console.error('提交失败:', error);
+                alert('提交失败，请重试');
+            }
+        });
+    </script>
+</body>
+</html>
