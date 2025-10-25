@@ -1,1 +1,51 @@
 
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>管理后台 - 校园同人文平台</title>
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/admin.css" rel="stylesheet">
+</head>
+<body>
+    <div class="admin-container">
+        <nav class="admin-sidebar">
+            <h4>管理后台</h4>
+            <ul class="nav nav-pills flex-column">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#works" data-bs-toggle="tab">作品审核</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#users" data-bs-toggle="tab">用户管理</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#posts" data-bs-toggle="tab">帖子管理</a>
+                </li>
+            </ul>
+        </nav>
+        
+        <div class="admin-content">
+            <div class="tab-content">
+                <div class="tab-pane fade show active" id="works">
+                    <h4>待审核作品</h4>
+                    <div id="pendingWorks" class="row"></div>
+                </div>
+                
+                <div class="tab-pane fade" id="users">
+                    <h4>用户管理</h4>
+                    <div id="usersList"></div>
+                </div>
+                
+                <div class="tab-pane fade" id="posts">
+                    <h4>帖子管理</h4>
+                    <div id="postsList"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/firebase-config.js"></script>
+    <script src="assets/js/admin.js"></script>
+</body>
+</html>
